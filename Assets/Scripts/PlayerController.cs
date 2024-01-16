@@ -9,16 +9,21 @@ public class PlayerController : MonoBehaviour
     Vector3 firstPos;
     Vector3 lastPos;
     float maxXPosition = 4.35f;
+    bool isPlayerMoving = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        isPlayerMoving = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isPlayerMoving)
+            return;
+
+
         float xValue = 0;
         if (Input.GetMouseButtonDown(0))
 		{
@@ -43,4 +48,13 @@ public class PlayerController : MonoBehaviour
         float newXValue = Mathf.Clamp(transform.position.x, -maxXPosition, maxXPosition);
         transform.position = new Vector3(newXValue, transform.position.y, transform.position.z);
     }
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.tag == "FinishLine")
+		{
+            isPlayerMoving = false;
+            Debug.Log("touched to finishLine");
+        }
+	}
 }
