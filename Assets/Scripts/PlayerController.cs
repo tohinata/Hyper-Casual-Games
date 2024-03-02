@@ -62,7 +62,12 @@ public class PlayerController : MonoBehaviour
             isPlayerMoving = false;
             Debug.Log("touched to finishLine");
         }
-	}
+
+        if (other.tag == "CannonBall")
+        {
+            PlayerGotHurt();
+        }
+    }
 
     public void TouchedToDiamond()
 	{
@@ -73,6 +78,11 @@ public class PlayerController : MonoBehaviour
     }
 
     public void TouchedToObstacle()
+    {
+        PlayerGotHurt();
+    }
+
+    public void PlayerGotHurt()
     {
         Vector3 obstalceEffectPos = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z + 1.5f);
         GameObject partical = Instantiate(obstaclePartical, obstalceEffectPos, Quaternion.identity);
