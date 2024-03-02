@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
 		{
 			isPlayerMoving = false;
 			StartIdleAnimation();
-			Debug.Log("touched to finishLine");
+			GameManager.instance.ShowSucessMenuPanel();
 		}
 
 		if (other.tag == "CannonBall")
