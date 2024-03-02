@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     float maxPlayerScale = 2.5f;
     float minPlayerScale = 0.8f;
     float diamondValue = 0.2f;
+    float obstacleDamageValue = 0.3f;
     public GameObject diamondPartical;
 
     // Start is called before the first frame update
@@ -70,6 +71,11 @@ public class PlayerController : MonoBehaviour
         GetBigger();
     }
 
+    public void TouchedToObstacle()
+    {
+        GetSmaller();
+    }
+
     private void GetBigger()
 	{
         transform.localScale = new Vector3(
@@ -82,4 +88,17 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(maxPlayerScale, maxPlayerScale, maxPlayerScale);
 		}
 	}
+
+    private void GetSmaller()
+    {
+        transform.localScale = new Vector3(
+            transform.localScale.x - obstacleDamageValue,
+            transform.localScale.y - obstacleDamageValue,
+            transform.localScale.z - obstacleDamageValue);
+
+        if (transform.localScale.x < minPlayerScale)
+        {
+            transform.localScale = new Vector3(minPlayerScale, minPlayerScale, minPlayerScale);
+        }
+    }
 }
