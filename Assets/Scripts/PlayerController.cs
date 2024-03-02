@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     Vector3 lastPos;
     float maxXPosition = 4.35f;
     bool isPlayerMoving = false;
+    float maxPlayerScale = 2.5f;
+    float minPlayerScale = 0.8f;
+    float diamondValue = 0.2f;
 
     // Start is called before the first frame update
     void Start()
@@ -56,5 +59,23 @@ public class PlayerController : MonoBehaviour
             isPlayerMoving = false;
             Debug.Log("touched to finishLine");
         }
+	}
+
+    public void TouchedToDiamond()
+	{
+        GetBigger();
+    }
+
+    private void GetBigger()
+	{
+        transform.localScale = new Vector3(
+            transform.localScale.x + diamondValue,
+            transform.localScale.y + diamondValue,
+            transform.localScale.z + diamondValue);
+
+        if (transform.localScale.x > maxPlayerScale)
+		{
+            transform.localScale = new Vector3(maxPlayerScale, maxPlayerScale, maxPlayerScale);
+		}
 	}
 }
