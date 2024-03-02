@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     float diamondValue = 0.2f;
     float obstacleDamageValue = 0.3f;
     public GameObject diamondPartical;
+    public GameObject obstaclePartical;
 
     // Start is called before the first frame update
     void Start()
@@ -73,6 +74,9 @@ public class PlayerController : MonoBehaviour
 
     public void TouchedToObstacle()
     {
+        Vector3 obstalceEffectPos = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z + 1.5f);
+        GameObject partical = Instantiate(obstaclePartical, obstalceEffectPos, Quaternion.identity);
+        Destroy(partical, 2f);
         GetSmaller();
     }
 
