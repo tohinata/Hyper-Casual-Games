@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e9ea84edb35eb43aa531f289c2c214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diamondPartical: {fileID: 2505042037544424742, guid: 0b8462252f074a94d8096cc61ac597e1, type: 3}
 --- !u!1 &278752737343883120
 GameObject:
   m_ObjectHideFlags: 0

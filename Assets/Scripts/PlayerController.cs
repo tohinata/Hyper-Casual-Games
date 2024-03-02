@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     float maxPlayerScale = 2.5f;
     float minPlayerScale = 0.8f;
     float diamondValue = 0.2f;
+    public GameObject diamondPartical;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +64,9 @@ public class PlayerController : MonoBehaviour
 
     public void TouchedToDiamond()
 	{
+        Vector3 effectPosition = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z + 1.5f);
+        GameObject partical = Instantiate(diamondPartical, effectPosition, Quaternion.identity);
+        Destroy(partical, 2f);
         GetBigger();
     }
 
