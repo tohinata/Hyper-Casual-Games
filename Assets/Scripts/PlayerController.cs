@@ -119,6 +119,8 @@ public class PlayerController : MonoBehaviour
 		if (transform.localScale.x < minPlayerScale)
 		{
 			transform.localScale = new Vector3(minPlayerScale, minPlayerScale, minPlayerScale);
+			GameManager.instance.ShowFailedMenuPanel();
+			StartPlayerMoving();
 		}
 	}
 
@@ -126,6 +128,12 @@ public class PlayerController : MonoBehaviour
 	{
 		isPlayerMoving = true;
 		StartRunAnimation();
+	}
+
+	public void StopPlayerMoving()
+	{
+		isPlayerMoving = false;
+		StartIdleAnimation();
 	}
 
 	private void StartRunAnimation()

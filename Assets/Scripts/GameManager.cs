@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameObject GameMenuPanel;
 	public GameObject SuccessMenuPanel;
+	public GameObject FailedMenuPanel;
 
 	private void Awake()
 	{
@@ -49,5 +50,10 @@ public class GameManager : MonoBehaviour
 	public void RestartButtonTapped()
 	{
 		SceneManager.LoadScene("SampleScene");
+	}
+
+	public void ShowFailedMenuPanel()
+	{
+		FailedMenuPanel.SetActive(true);
 	}
 }
