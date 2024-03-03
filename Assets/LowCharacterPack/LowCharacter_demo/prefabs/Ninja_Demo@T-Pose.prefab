@@ -133,6 +133,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diamondPartical: {fileID: 2505042037544424742, guid: 0b8462252f074a94d8096cc61ac597e1, type: 3}
   obstaclePartical: {fileID: 2505042037544424742, guid: 850d68184e1cebd46b53d225d22ec1b1, type: 3}
+  playerAudioSource: {fileID: 0}
+  obstacleClip: {fileID: 8300000, guid: a3bc87819e740a147b37863b495acd1a, type: 3}
+  diamondClip: {fileID: 8300000, guid: 580a1cf091c189f498718873a5a93289, type: 3}
+  congratesClip: {fileID: 8300000, guid: e23408cacda015c468a1d56896046e44, type: 3}
+  failedClip: {fileID: 8300000, guid: 3f411b80842d58945b39ee16c26949c2, type: 3}
 --- !u!1 &278752737343883120
 GameObject:
   m_ObjectHideFlags: 0

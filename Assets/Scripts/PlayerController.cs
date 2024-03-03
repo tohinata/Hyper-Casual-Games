@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 	public GameObject diamondPartical;
 	public GameObject obstaclePartical;
 	private Animator PlayerAC;
+	public AudioSource playerAudioSource;
+	public AudioClip obstacleClip, diamondClip, congratesClip, failedClip;
 
 	// Start is called before the first frame update
 	void Start()
@@ -63,6 +65,7 @@ public class PlayerController : MonoBehaviour
 			isPlayerMoving = false;
 			StartIdleAnimation();
 			GameManager.instance.ShowSucessMenuPanel();
+			PlayAudio(congratesClip);
 		}
 
 		if (other.tag == "CannonBall")
@@ -81,6 +84,7 @@ public class PlayerController : MonoBehaviour
 		GameObject partical = Instantiate(diamondPartical, effectPosition, Quaternion.identity);
 		Destroy(partical, 2f);
 		GetBigger();
+		PlayAudio(diamondClip);
 	}
 
 	public void TouchedToObstacle()
@@ -94,6 +98,7 @@ public class PlayerController : MonoBehaviour
 		GameObject partical = Instantiate(obstaclePartical, obstalceEffectPos, Quaternion.identity);
 		Destroy(partical, 2f);
 		GetSmaller();
+		PlayAudio(obstacleClip);
 	}
 
 	private void GetBigger()
@@ -120,6 +125,7 @@ public class PlayerController : MonoBehaviour
 		{
 			transform.localScale = new Vector3(minPlayerScale, minPlayerScale, minPlayerScale);
 			GameManager.instance.ShowFailedMenuPanel();
+			PlayAudio(failedClip);
 			StartPlayerMoving();
 		}
 	}
@@ -144,5 +150,13 @@ public class PlayerController : MonoBehaviour
 	private void StartIdleAnimation()
 	{
 		PlayerAC.SetBool("isPlayerRunning", false);
+	}
+
+	void PlayAudio(AudioClip audioClip)
+	{
+		if (playerAudioSource != null)
+		{
+			playerAudioSource.PlayOneShot(audioClip, 1);
+		}
 	}
 }
